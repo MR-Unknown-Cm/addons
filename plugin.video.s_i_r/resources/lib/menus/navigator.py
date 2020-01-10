@@ -42,7 +42,8 @@ class Navigator:
         self.addDirectoryItem('Dracula And Friends', 'dracnavigator', 'drac.png', 'DefaultMovies.png')
         self.addDirectoryItem('Jigsaws PlayTime', 'jsptnavigator', 'js.png', 'DefaultMovies.png')
         self.addDirectoryItem('GhostTown', 'gtnavigator', 'gticon.png', 'DefaultMovies.png')
-
+        self.addDirectoryItem('top keywords movies', 'keymovie', 'genres.png', 'DefaultMovies.png')
+        #self.addDirectoryItem('top keywords tv shows', 'keytv', 'genres.png', 'DefaultMovies.png')
         if self.getMenuEnabled('mylists.widget') is True:
             self.addDirectoryItem(32003, 'mymovieNavigator', 'mymovies.png','DefaultVideoPlaylists.png')
             self.addDirectoryItem(32004, 'mytvNavigator', 'mytvshows.png', 'DefaultVideoPlaylists.png')

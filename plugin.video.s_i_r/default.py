@@ -1579,3 +1579,12 @@ elif action == 'gtmaretvLanguages':
 elif action == 'gtmaretvYears':
     from resources.lib.indexers import wwtvshows
     wwtvshows.tvshows().years()
+
+
+elif action == 'keymovie':
+    from resources.lib.menus import movies
+    movies.Movies().keymovie()
+
+elif action == 'keytv':
+    from resources.lib.menus import tvshows
+    tvshows.TVshows().keytv()
