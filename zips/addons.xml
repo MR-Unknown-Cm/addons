@@ -28,7 +28,7 @@
 	</extension>
 </addon>
 
-<addon id="plugin.video.s_i_r" version="1.0.0" name="Still i Rise" provider-name="Mr Unknown">
+<addon id="plugin.video.s_i_r" version="1.0.1" name="Still i Rise" provider-name="Mr Unknown">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
 		<import addon="script.s_i_r.metadata" />
@@ -53,6 +53,38 @@
     			<screenshot></screenshot>
 		</assets>
 		<news></news>
+	</extension>
+</addon>
+
+<addon id="repository.cm" name="Crucial Minds Repo" version="1.0.1" provider-name="Mr Unknown">
+	<extension point="xbmc.addon.repository" name="CruCial Minds REPO">
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/MR-Unknown-Cm/addons/master/zips/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/MR-Unknown-Cm/addons/master/zips/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/MR-Unknown-Cm/addons/master/zips/</datadir>
+		</dir>
+		<dir>
+			<info compressed="false">https://raw.githubusercontent.com/a4k-openproject/repository.openscrapers/master/zips/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/a4k-openproject/repository.openscrapers/master/zips/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/a4k-openproject/repository.openscrapers/master/zips/</datadir>
+		</dir>
+		<dir>
+            <info compressed="false">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/teamuniversal/scrapers/master/_modules4all/zips/</datadir>
+        </dir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Yes Im Back As My First Persona All Fakes Need To Get Ghost</summary>
+		<description lang="en">CruCial Minds Repo</description>
+		<genre></genre>
+    <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+        <banner></banner>
+        <clearlogo></clearlogo>
+        <screenshot></screenshot>
+    </assets>
 	</extension>
 </addon>
 
