@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.podusinfo" name="plex o dus info mod" version="1.0.0" provider-name="bonecrusher">
+  <requires>
+    <import addon="xbmc.python" version="2.25.0"/>
+    <import addon="script.module.pil" version="1.1.7"/>
+    <import addon="script.module.requests" version="2.9.1"/>
+    <import addon="script.module.simplejson" version="2.0.10"/>
+    <import addon="script.module.resolveurl"/>
+    <import addon="script.module.youtube.dl"/>
+    <import addon="plugin.program.super.favourites"/>
+    <import addon="plugin.video.youtube" version="6.2.2"/>
+    <import addon="resource.images.studios.white" version="0.0.18"/>
+    <import addon="plugin.video.plexodusplayer"/>
+  </requires>
+  <extension point="xbmc.python.script"             library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.python.library"            library="default.py" />
+  <extension point="xbmc.python.pluginsource"       library="plugin.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <language/>
+    <summary lang="en">plex o dus info mod to work with </summary>
+    <description>This addon is a fork of Metal Gear Solid for the upcoming build im doing. plex o dus info mod script to work with plexodus player</description>
+    <platform>all</platform>
+    <reuselanguageinvoker>false</reuselanguageinvoker>
+    <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+  </extension>
+</addon>

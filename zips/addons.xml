@@ -1,5 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addons>
+<addon id="plugin.program.super.favourites" name="Super Favourites" version="1.0.43" provider-name="spoyser">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="script.module.metahandler" optional="true" />
+  </requires>
+
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video audio executable image</provides>
+  </extension>
+
+  <extension point="xbmc.service" library="service.py" start="startup" />
+
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Put all your favourites bits of all your favourites addons into one easy to use addon.</summary>
+    <description lang="en">Super Favourites is a better way of managing your Kodi Favourites.[CR][CR]Virtually any menu item within Kodi can be added to Super Favourites, even from addons that don't normally provide this feature.[CR][CR]Super Favourites allows you to better manage your Kodi favourites, including the creation of sub-folders, into which your Kodi favourites can then be copied or moved into.[CR][CR]This allows you to create you own custom addon with just the best bits of your favourite addons. Search your favourite addons, play your favourite music, read your favourite comic strips, select your favourite playlists, browse your favourite movies, listen to your favourite radio stations, watch your favourite cartoons, the possibilities are endless, all from within one easy to use addon.</description>
+    <platform>all</platform>
+    <language>en</language>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum>http://forum.xbmc.org/showthread.php?tid=192662</forum>
+    <website></website>
+    <source>https://github.com/spoyser/spoyser-repo/tree/master/plugin.program.super.favourites</source>
+    <email>seanpoyser at gmail.com</email>
+  </extension>
+
+  <extension point="kodi.context.item" library="capture.py">
+      <item>
+        <label>30000</label>
+        <visible>true</visible>
+      </item>
+    </extension>
+</addon>
+
 <addon id="plugin.video.bcreborn" version="1.0.10" name="Bone Crusher Reborn" provider-name="Bone Crusher">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0" />
@@ -26,6 +58,114 @@
 		</assets>
 		<news></news>
 	</extension>
+</addon>
+
+<addon id="plugin.video.plexodus" version="1.0.0" name="plexOdus" provider-name="Bonecrusher">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0" />
+		<import addon="script.plexodus.metadata" />
+		<import addon="script.module.resolveurl" />
+		<import addon="script.module.requests" />
+		<import addon="script.plexodus" />
+		<import addon="script.plexo" />
+		<import addon="script.podusinfo" />
+		<import addon="plugin.video.plexodusplayer" />
+		<import addon="script.module.openscrapers" />
+		<import addon="script.module.metahandler" version="1.0.0" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="startup" />
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">plexOdus</summary>
+		<description lang="en">This addon does not form part of the Kodi Media Centre. Please do not seek assistance with this addon from any of the Official Kodi Support Channels.The author does not host any of the content in this addon and takes no responsibility for content found.</description>
+		<disclaimer lang="en">The author of this addon do not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+    			<screenshot></screenshot>
+		</assets>
+		<news></news>
+	</extension>
+</addon>
+
+<addon id="plugin.video.plexodusplayer" name="Plexodus player" version="1.0.0" provider-name="Bonecrusher">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+		<import addon="script.module.requests" version="2.9.1"/>
+		<import addon="script.module.futures" version="2.2.0"/>
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video audio</provides>
+	</extension>
+	<extension point="xbmc.service" library="service.py" start="login">
+	</extension>
+	<extension point="kodi.context.item">
+		<menu id="kodi.core.main">
+			<menu>
+				<label>Plexodus player</label>
+				<item library="context_toggle.py">
+					<label>Preferred toggle</label>
+					<visible>!System.HasAddon(context.Plexodus player) + !Skin.HasSetting(Toggling)</visible>
+				</item>
+				<item library="context_movie.py">
+					<label>$ADDON[plugin.video.plexodusplayer 30602]</label>
+					<visible>String.IsEqual(ListItem.dbtype,movie) + String.Contains(ListItem.Path, plugin.video.plexodusplayer)</visible>
+				</item>
+				<item library="context_tvshow.py">
+					<label>$ADDON[plugin.video.plexodusplayer 30602]</label>
+					<visible>String.IsEqual(ListItem.dbtype,tvshow) + String.Contains(ListItem.Path, plugin.video.plexodusplayer)</visible>
+				</item>
+				<item library="context_live.py">
+					<label>$ADDON[plugin.video.plexodusplayer 30602]</label>
+					<visible>[String.Contains(ListItem.FileNameAndPath, plugin.video.plexodusplayer\\Live) | String.Contains(ListItem.FileNameAndPath, plugin.video.plexodusplayer\\Live)]</visible>
+				</item>
+				<item library="context_playable.py">
+					<label>$ADDON[plugin.video.plexodusplayer 30622]</label>
+					<visible>!System.HasAddon(context.Plexodus player) + !Skin.HasSetting(Contexting)</visible>
+				</item>
+			</menu>
+		</menu>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<language></language>
+		<summary lang="en">This addon is a fork of metal gear for the upcoming build im doing. This Addon allows you to browse and search for media and then pass that to whatever addon you want to play it with</summary>
+		<description lang="en">This Addon allows you to browse and search for media and then pass that to whatever addon you want to play it with. [COLOR cyan]I take no Credit for 99.99% of this code. Without the original developers,  this add-on would never exist. Thanks for all they have doen to the community.[/COLOR]</description>
+		<supportedcontent>
+			<content>movies</content>
+			<content>tvshows</content>
+			<content>episodes</content>
+			<content>musicvideos</content>
+			<content>music</content>
+			<content>livetv</content>
+		</supportedcontent>
+		<genre>movies,tv,music,livetv</genre>
+		<!--<video_guide>yt-id</video_guide>
+		<video_preview>yt-id</video_preview>-->
+		<forum></forum>
+		<source></source>
+		<email></email>
+		<news></news>
+                <website></website>
+
+		<source></source>
+
+		<assets>
+
+			<icon>icon.png</icon>
+
+			<fanart>fanart.jpg</fanart>
+
+		</assets>
+
+		<news></news>
+
+	</extension>
+
 </addon>
 
 <addon id="plugin.video.s_i_r" version="1.0.3" name="Still i Rise" provider-name="Mr Unknown">
@@ -56,7 +196,7 @@
 	</extension>
 </addon>
 
-<addon id="repository.cm" name="Crucial Minds Repo" version="1.0.2" provider-name="Mr Unknown">
+<addon id="repository.cm" name="Crucial Minds Repo" version="1.0.4" provider-name="Mr Unknown">
 	<extension point="xbmc.addon.repository" name="CruCial Minds REPO">
 		<dir>
 			<info compressed="false">https://raw.githubusercontent.com/MR-Unknown-Cm/addons/master/zips/addons.xml</info>
@@ -98,6 +238,140 @@
 		<description>Metadata for Bone Crusher Reborn are maintained separately to make distribution of the the addon itself easier/faster.</description>
 		<platform>all</platform>
 	</extension>
+</addon>
+
+<addon id="script.plexo"
+       name="plexo"
+       version="0.1.6"
+       provider-name="Plex">
+    <requires>
+        <import addon="xbmc.python" version="2.25.0"/>
+        <import addon="script.module.requests" version="2.3.0"/>
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides></provides>
+    </extension>
+    <extension point="xbmc.python.pluginsource" library="plugin.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" start="startup"></extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Plex for Kodi</summary>
+        <summary lang="de">Plex für Kodi</summary>
+        <summary lang="hu">Plex for Kodi</summary>
+        <summary lang="ru">Plex for Kodi</summary>
+        <description lang="en">Official Plex for Kodi add-on</description>
+        <description lang="de">Offizielles Plex für Kodi Addon</description>
+        <description lang="hu">Hivatalos Plex for Kodi add-on</description>
+        <description lang="fr">Add-on Officiel Plex pour Kodi</description>
+        <description lang="ru">Официальный аддон Plex for Kodi</description>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+        <forum>https://forums.plex.tv/categories/plex-for-kodi</forum>
+        <website>https://www.plex.tv</website>
+        <source>https://github.com/plexinc/plex-for-kodi</source>
+        <platform>all</platform>
+        <news>
+Kodi v18: Fix skin compatability issues
+Kodi v18: Fix incompatibility with requests module update
+Kodi v18: Fix issue with playback not resuming properly when direct playing
+Kodi v18: Fix issue with progress bar not moving on music player/music playlist screens
+Fix album display on artist screen
+Fix bug causing failure to show audio player when clicking the mini player from some screens
+Show original artist when available (Issue #143)
+Improve centering over label backgrounds on pre-play screens
+Fix some spots where tokens could still be logged
+Play correct track when playing a multi-disc album (Issue #148)
+Improve headers for better identification in 'Now Playing' and future server profile
+Updated German language strings (thanks to coffinbearer)
+Fix French translations file (thanks to coffinbearer)
+Fix some Hungarian translations (thanks to vampywiz17)
+Add Russion translations (thanks to shady2k)
+Fix autostart to work with profiles (thanks to pannal)
+Fix focus loss on home screen due to error (Issue #169)
+Fix "No Servers Found" when preferred server is unavailable (Issue #159)
+Fix system keyboard not working for search (Kodi 17+)(Issue #165)
+Fix issue causing hubs to scroll up when settings were opened
+Fix failure to sign in when signed off externally (Issue #110, #117)
+        </news>
+    </extension>
+</addon>
+
+<addon id="script.plexodus"
+       name="plexodus"
+       version="0.1.6"
+       provider-name="plexodus">
+    <requires>
+        <import addon="xbmc.python" version="2.25.0"/>
+        <import addon="script.module.requests" version="2.3.0"/>
+    </requires>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides></provides>
+    </extension>
+    <extension point="xbmc.python.pluginsource" library="plugin.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" start="startup"></extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Plex for Kodi</summary>
+        <summary lang="de">Plex für Kodi</summary>
+        <summary lang="hu">Plex for Kodi</summary>
+        <summary lang="ru">Plex for Kodi</summary>
+        <description lang="en">Official Plex for Kodi add-on</description>
+        <description lang="de">Offizielles Plex für Kodi Addon</description>
+        <description lang="hu">Hivatalos Plex for Kodi add-on</description>
+        <description lang="fr">Add-on Officiel Plex pour Kodi</description>
+        <description lang="ru">Официальный аддон Plex for Kodi</description>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+        <forum>https://forums.plex.tv/categories/plex-for-kodi</forum>
+        <website>https://www.plex.tv</website>
+        <source>https://github.com/plexinc/plex-for-kodi</source>
+        <platform>all</platform>
+        <news>
+
+        </news>
+    </extension>
+</addon>
+
+<addon id="plexodus.metadata" version="1.0.0" name="PlexodusMetadata" provider-name="Bonecrusher">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary>Metadata for the PlexodusAddon</summary>
+		<description>Metadata for Plexodusare maintained separately to make distribution of the the addon itself easier/faster.</description>
+		<platform>all</platform>
+	</extension>
+</addon>
+
+<addon id="script.podusinfo" name="plex o dus info mod" version="1.0.0" provider-name="bonecrusher">
+  <requires>
+    <import addon="xbmc.python" version="2.25.0"/>
+    <import addon="script.module.pil" version="1.1.7"/>
+    <import addon="script.module.requests" version="2.9.1"/>
+    <import addon="script.module.simplejson" version="2.0.10"/>
+    <import addon="script.module.resolveurl"/>
+    <import addon="script.module.youtube.dl"/>
+    <import addon="plugin.program.super.favourites"/>
+    <import addon="plugin.video.youtube" version="6.2.2"/>
+    <import addon="resource.images.studios.white" version="0.0.18"/>
+    <import addon="plugin.video.plexodusplayer"/>
+  </requires>
+  <extension point="xbmc.python.script"             library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.python.library"            library="default.py" />
+  <extension point="xbmc.python.pluginsource"       library="plugin.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <language/>
+    <summary lang="en">plex o dus info mod to work with </summary>
+    <description>This addon is a fork of Metal Gear Solid for the upcoming build im doing. plex o dus info mod script to work with plexodus player</description>
+    <platform>all</platform>
+    <reuselanguageinvoker>false</reuselanguageinvoker>
+    <license>GNU GENERAL PUBLIC LICENSE Version 2, June 1991</license>
+  </extension>
 </addon>
 
 <addon id="script.s_i_r.metadata" version="1.0.0" name="Still i Rise Metadata" provider-name="Mr Unknown">
