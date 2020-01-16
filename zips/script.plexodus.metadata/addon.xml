@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plexodus.metadata" version="1.0.0" name="PlexodusMetadata" provider-name="Bonecrusher">
+<addon id="script.plexodus.metadata" version="1.0.0" name="PlexodusMetadata" provider-name="Bonecrusher">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
 	</requires>
